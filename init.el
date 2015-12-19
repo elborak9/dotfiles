@@ -1,13 +1,23 @@
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/"))
 
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives
-	       '("gnu" . "http://elpa.gnu.org/packages/")))
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+			 ("marmalede" . "https://marmalade-repo.org/packages/")
+			 ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
+
+(package-install 'magit)
+
+(package-install 'solarized-theme)
+
+;;Enable solarized-light theme on init
+(require 'solarized)
+
+(deftheme solarized-light "The light variant of the Solarized colour theme")
+(create-solarized-theme 'light 'solarized-light)
+(provide-theme 'solarized-light)
+
+(setq solarized-use-less-bold t)
 
 (show-paren-mode 1)
 
@@ -66,3 +76,7 @@
 ;;turn on automatic reparsing of open buffers in semantic
 (global-semantic-idle-scheduler-mode 1)
 
+(global-linum-mode 1)
+(eval-after-load "linum"
+  '(set-face-attribute 'linum nil
+		       :height 120))
