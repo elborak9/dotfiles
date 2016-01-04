@@ -80,3 +80,7 @@
 (eval-after-load "linum"
   '(set-face-attribute 'linum nil
 		       :height 120))
+
+(global-wakatime-mode)
+(set 'wakatime-api-key "fe815ec8-ff05-44e1-ad6c-30498d7cf182")
+(set 'wakatime-cli-path "/Library/Python/2.7/site-packages/wakatime/cli.py")
