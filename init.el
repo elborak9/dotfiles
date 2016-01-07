@@ -26,6 +26,7 @@
 ;; do default config for auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
+(setq ac-ignore-case nil)
 
 ;; start yasnippet with emacs
 (require 'yasnippet)
@@ -87,3 +88,8 @@
 
 (require 'discover)
 (global-discover-mode 1)
+
+;;Configure projectile
+(projectile-global-mode)
+(setq projectile-indexing-mode 'alien)
+(setq projectile-enable-caching t)
